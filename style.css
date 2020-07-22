@@ -26,6 +26,10 @@ body {
   margin: 0 auto;
 }
 
+.elements-left {
+  justify-content: left;
+}
+
 .elements-center {
   justify-content: center;
 }
