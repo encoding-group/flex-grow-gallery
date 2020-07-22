@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f1f1f1;
+}
+
+#app {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.slider {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.box {
+  background-color: #b1b1b1;
+  border: 20px solid white;
+  border-radius: 5px;
+  box-shadow: 3px 3px 15px #d1d1d1;
+  margin: 2rem;
+  transition-property: width, height;
+  transition-duration: 0.3s;
+}
