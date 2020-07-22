@@ -1,10 +1,15 @@
-const createBoxes = () => {
-  let boxes = [];
+const createBox = () => {
+  const box = document.createElement("img");
+  box.className = "box";
+  box.setAttribute("src", "./images/logo.jpg");
+  return box;
+};
+
+const createBoxes = (size) => {
+  const boxes = [];
   for (let i = 0; i <= 100; i++) {
-    let box = document.createElement("img");
-    box.className = "box";
-    box.setAttribute("src", "./images/logo.jpg");
-    setBoxSize(box, 200, 200);
+    const box = createBox();
+    setBoxSize(box, size, size);
     boxes.push(box);
     app.appendChild(box);
   }
@@ -12,36 +17,47 @@ const createBoxes = () => {
   return boxes;
 };
 
-const setBoxSize = (image, x, y) =>
-  (image.style = `
-    width: ${x}px;
-    height: ${y}px;
-    margin: ${0.04 * x}px;
-    border-width: ${0.04 * x}px;
+const setBoxSize = (box, width, height) =>
+  (box.style = `
+    width: ${width}px;
+    height: ${height}px;
+    margin: ${width * 0.04}px;
+    border-width: ${width * 0.04}px;
   `);
 
-const resizeBoxes = function (boxes, size) {
-  sliderValue.innerText = `${size / 100}x`;
+const updateBoxes = (boxes, size) => {
   let i = boxes.length;
   while (i--) {
     setBoxSize(boxes[i], size, size);
   }
 };
 
-const onChangeLayout = (event) => {
-  app.className = `app ${event.target.value}`;
+const updateSliderLabel = (sliderLabel, value) => {
+  sliderLabel.innerText = `${value / 100}x`;
+};
+
+const changeLayout = (app, value) => {
+  app.className = `app ${value}`;
 };
 
 const app = document.querySelector(".app");
+const initialZoom = app.getAttribute("data-initial-zoom") * 100;
 const sliderInput = document.querySelector(".slider-input");
-const sliderValue = document.querySelector(".slider-value");
+const sliderLabel = document.querySelector(".slider-value");
 const layoutSelect = document.querySelector(".select-layout");
-const boxes = createBoxes();
+const boxes = createBoxes(initialZoom);
 
-sliderInput.addEventListener("input", (event) =>
-  resizeBoxes(boxes, event.target.value)
+layoutSelect.addEventListener("change", (event) =>
+  changeLayout(app, event.target.value)
 );
 
-window.addEventListener("load", () => resizeBoxes(boxes, 500));
+sliderInput.addEventListener("input", (event) => {
+  updateSliderLabel(sliderLabel, event.target.value);
+  updateBoxes(boxes, event.target.value);
+});
 
-layoutSelect.addEventListener("change", onChangeLayout);
+window.addEventListener("load", function () {
+  sliderInput.value = initialZoom;
+  updateSliderLabel(sliderLabel, initialZoom);
+  updateBoxes(boxes, initialZoom);
+});
