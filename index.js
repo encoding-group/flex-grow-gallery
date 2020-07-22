@@ -1,8 +1,13 @@
-const app = document.getElementById("app");
+const app = document.querySelector(".app");
 const boxes = [];
 
 const setBoxSize = (image, x, y) =>
-  (image.style = `width: ${x}px; height: ${y}px;`);
+  (image.style = `
+    width: ${x}px;
+    height: ${y}px;
+    margin: ${0.04 * x}px;
+    border-width: ${0.04 * x}px;
+  `);
 
 for (let i = 0; i <= 100; i++) {
   let box = document.createElement("img");
@@ -13,11 +18,26 @@ for (let i = 0; i <= 100; i++) {
   app.appendChild(box);
 }
 
-const slider = document.querySelector(".slider");
+const slider = document.querySelector(".slider-input");
+const sliderValue = document.querySelector(".slider-value");
 
-slider.oninput = function (event) {
+const resizeBoxes = function (size) {
+  sliderValue.innerText = `${size / 100}x`;
   let i = boxes.length;
   while (i--) {
-    setBoxSize(boxes[i], event.target.value, event.target.value);
+    setBoxSize(boxes[i], size, size);
   }
 };
+
+slider.oninput = (event) => resizeBoxes(event.target.value);
+
+window.onload = () => resizeBoxes(500);
+
+const selection = document.querySelector("#layout");
+
+const onChangeLayout = (event) => {
+  console.log(event.target.value);
+  app.className = `app ${event.target.value}`;
+};
+
+selection.addEventListener("change", onChangeLayout);
