@@ -1,30 +1,106 @@
 * {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  vertical-align: baseline;
   box-sizing: border-box;
 }
 
-body {
-  background-color: #f1f1f1;
+html {
+  font-size: 1.2rem;
 }
 
-#app {
+body {
+  padding: 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: #f2f2f2;
+}
+
+.app {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   max-width: 90%;
   margin: 0 auto;
 }
 
+.elements-center {
+  justify-content: center;
+}
+
+.elements-around {
+  justify-content: space-around;
+}
+
+.elements-between {
+  justify-content: space-between;
+}
+
+.elements-evenly {
+  justify-content: space-evenly;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header .title {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.header .link {
+  font-size: 1.25rem;
+}
+
+.header a {
+  text-decoration: none;
+  border: 2px solid black;
+  padding: 2px 8px;
+  transition-property: background-color;
+  transition-duration: 0.3s;
+}
+
+.header a:hover {
+  background-color: #bada55;
+}
+
 .slider {
-  width: 500px;
-  margin: 0 auto;
+  width: 800px;
+  margin: 2rem auto;
+  display: flex;
+  font-weight: bold;
+}
+
+.slider-label {
+  display: block;
+  width: 20%;
+}
+
+.slider-input {
+  display: block;
+  width: 60%;
+}
+
+.slider-value {
+  display: block;
+  width: 20%;
+  text-align: end;
 }
 
 .box {
   background-color: #b1b1b1;
-  border: 20px solid white;
+  border-style: solid;
+  border-color: white;
   border-radius: 5px;
   box-shadow: 3px 3px 15px #d1d1d1;
-  margin: 2rem;
-  transition-property: width, height;
+  transition-property: width, height, transform;
   transition-duration: 0.3s;
+}
+
+.box:hover {
+  transform: scale(1.1);
 }
