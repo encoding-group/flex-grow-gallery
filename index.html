@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    <title>Flex Grow Gallery</title>
   </head>
   <body>
     <header class="header">
@@ -17,7 +17,8 @@
     </header>
     <div>
       <label for="layout">Layout:</label>
-      <select name="layout" id="layout">
+      <select name="layout" id="layout" class="select-layout">
+        <option value="elements-left" selected>Left</option>
         <option value="elements-center">Centered</option>
         <option value="elements-around">Space Around</option>
         <option value="elements-between">Space Between</option>
@@ -37,7 +38,7 @@
       />
       <span class="slider-value">2x</span>
     </div>
-    <div class="app elements-center"></div>
+    <div class="app elements-left"></div>
     <script src="index.js"></script>
   </body>
 </html>
