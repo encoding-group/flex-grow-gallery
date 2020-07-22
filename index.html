@@ -7,18 +7,33 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>Flex Grow</h1>
+    <header class="header">
+      <h1 class="title">Flex Grow</h1>
+      <span class="link"><a href="#">Github</a></span>
+    </header>
+    <div>
+      <label for="layout">Layout:</label>
+      <select name="layout" id="layout">
+        <option value="elements-center">Centered</option>
+        <option value="elements-around">Space Around</option>
+        <option value="elements-between">Space Between</option>
+        <option value="elements-evenly">Space Evenly</option>
+      </select>
+    </div>
     <div class="slider">
+      <label for="slider" class="slider-label">Zoom:</label>
       <input
+        id="slider"
+        class="slider-input"
         type="range"
-        class="slider"
         min="100"
         max="1000"
         value="500"
         step="100"
       />
+      <span class="slider-value">2x</span>
     </div>
-    <div id="app"></div>
+    <div class="app elements-center"></div>
     <script src="index.js"></script>
   </body>
 </html>
